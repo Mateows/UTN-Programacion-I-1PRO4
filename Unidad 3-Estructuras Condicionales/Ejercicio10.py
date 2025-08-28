@@ -17,14 +17,14 @@ ESTACION = " "
 
 
 
-lugar_hemiferio = int(input("En que hemiferio se encuentra? (1)Hemiferio Norte, (2)Hemiferio Sur"))
+lugar_hemiferio = int(input("En que hemiferio se encuentra? (1)Hemiferio Norte, (2)Hemiferio Sur "))
 if lugar_hemiferio == 1 or lugar_hemiferio== 2:
     pass
 else:
     print("Hemiferio inexistente, finalizando")
     exit()
 
-tiempo = input("¿Que día y mes se encuentra? DD/MM")
+tiempo = input("¿Que día y mes se encuentra? DD/MM ")
 dia, mes = map(int, tiempo.split("/"))
 
 if lugar_hemiferio == 1: #El condicional entra al Hemiferio Norte en caso de ser 1
