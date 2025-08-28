@@ -4,9 +4,11 @@
 # pantalla "Por favor, ingrese una contraseña de entre 8 y 14 caracteres". Nota: investigue el uso
 # de la función len() en Python para evaluar la cantidad de elementos que tiene un iterable tal
 # como una lista o un string.
-clave = input("Ingrese una contraseña entre 8-14 caracteres: ")
+
+
+clave = input("Ingrese una contraseña entre 8-14 caracteres: ") #famliry241 (Entra al caso de 8-14 caracteres (V))
 clave = len(clave)
 if clave >= 8 and clave <= 14:
-    print ("Ha ingresado una contraseña correcta")
+    print ("Ha ingresado una contraseña correcta") 
 else:
     print("Por favor, ingrese una contraseña de entre 8 y 14 caracteres")

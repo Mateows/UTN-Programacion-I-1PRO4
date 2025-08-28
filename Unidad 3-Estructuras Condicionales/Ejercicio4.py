@@ -6,14 +6,14 @@
 # ● Adulto/a: mayor o igual que 30 años.
 
 edad = int(input("Ingrese su edad: "))
-if edad > 0 and edad < 12:
-    print("Niño/a")
-elif edad >= 12 and edad < 18:
+if edad > 0 and edad < 12: #edad = 11
+    print("Niño/a") 
+elif edad >= 12 and edad < 18: #edad = 12
     print("Adolecente")
-elif edad >= 18 and edad < 30:
+elif edad >= 18 and edad < 30: #edad = 29
     print("Adulto/a joven")
-elif edad >= 30:
+elif edad >= 30: #edad = 30
     print("Adulto/a")
 else:
-    print("Edad no válida")
+    print("Edad no válida") #En caso de que la edad fuese menor a 0 y/o la edad fue mayor o igual a 30
 
