@@ -1,7 +1,7 @@
 import random
-opciones = {"piedra" : 1,
+opciones = {"piedra" : 3,
             "papel" : 2,
-            "tijera": 3} 
+            "tijera": 1} 
 #[]
 
 jugada_usuario = 0
@@ -19,10 +19,14 @@ while jugada_usuario != 4:
 
     if jugada_usuario == 4:
         break
-
-    if jugada_usuario == jugada_maquina:
-        print("Empate")
-    elif jugada_usuario > jugada_maquina and jugada_maquina == 3:
-        print("Piedra vence a Tijera")
-    elif jugada_usuario < jugada_maquina and jugada_maquina == 2:
-        print("Tijera vence a Papel")
+    else:
+        if jugada_usuario == jugada_maquina:
+            print("Empate")
+        elif jugada_usuario > jugada_maquina or jugada_maquina == 1:
+            print("Piedra vence a Tijera")
+        elif jugada_usuario > jugada_maquina and jugada_maquina == 2:
+            print("Tijera vence a Papel")
+        elif jugada_usuario < jugada_maquina and jugada_maquina == 3:
+            print("Papel vence a Piedra")
+        
+ 
