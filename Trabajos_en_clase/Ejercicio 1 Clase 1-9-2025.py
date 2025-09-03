@@ -27,26 +27,27 @@ corrimiento = 0
 letra = ""
 indice = 0
 indice_encriptado = 0
-mensaje_encriptado = ""
+
 
 
 corrimiento = int(input("Corrimiento que utilizara en cada mensaje\n"))
 
-for i in range(5):
+for i in range(5): #Creo un bucle donde solicite los 5 mensajes (o menos) que necesito pasar a codigo César
     mensaje = input(f"ingrese el mensaje nº{i+1}: ")
-    mensaje_clave.append(mensaje)
+    mensaje_clave.append(mensaje) #Cada mensaje se ira agregando a mi lista "mensaje_clave[]"
 
-##Acá no se separan el diccionario con los valores creadors
+
 for mensaje in mensaje_clave:
-    for letra in mensaje.lower():
+    mensaje_encriptado = " " ##Necesito que está variable se vaya reiniciando por cada vuelta que haga mi bucle, asi no acumula los demas mensajes
+    for letra in mensaje.lower(): #Convierto todo el string a minuscula para que no genere problemas a a hora de recorrer el abecedario
         if letra in abecedario:
-            indice = abecedario.index(letra)
+            indice = abecedario.index(letra) #Convierto todas las letras a números para que no se generé un error de asignar un string a entero
             indice_encriptado = (indice + corrimiento)% len(abecedario)
-            mensaje_encriptado += abecedario[indice]
+            mensaje_encriptado += abecedario[indice_encriptado]
         else:
-            mensaje_encriptado += mensaje_encriptado + letra
+            mensaje_encriptado += letra
+    print(mensaje_encriptado.upper())
 
-print(mensaje_encriptado.upper()) ##Verificar porque TODAS las cadenas de texto no se separan
 
 
 
