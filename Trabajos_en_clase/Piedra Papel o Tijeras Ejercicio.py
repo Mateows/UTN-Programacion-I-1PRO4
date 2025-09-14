@@ -16,6 +16,7 @@
 # computadora. 
 # • El juego termina cuando el jugador elija salir, mostrando el resultado final. 
 
+#Clase 1/9/2025 Ejercicio jugar contra la maquina , Piedra Papel o Tijeras? Esa es la cuestion
 
 import random #Importe esta funcion de Python para que la maquina eliga una opcion al azar entre piedra, papel o tijera
 
