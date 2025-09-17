@@ -1,57 +1,93 @@
-# Asignatura: Programación I
-# Tema: Estructuras Repetitivas con Listas
-# Caso 1 – Biblioteca escolar – Préstamos de libros
-# Enunciado / Descripción
-# La biblioteca escolar necesita un sistema de gestión sencillo para su catálogo de libros y las copias disponibles. Se pide desarrollar un programa con una interfaz basada en menú que utilice listas paralelas (una para títulos[] y otra para ejemplares[]). Cada título debe estar vinculado a su número correspondiente de copias utilizando el mismo índice en ambas listas. Se debe utilizar un bucle while para navegar por las opciones del menú hasta que el usuario elija salir.
-# Ejemplo:
-# •	títulos[] = ["El Señor de los Anillos", "Orgullo y Prejuicio", "Matar un Ruiseñor"]
-# •	ejemplares[] = [5, 3, 7]
-# En este ejemplo, "El Señor de los Anillos" tiene 5 copias, "Orgullo y Prejuicio" tiene 3 copias, y "Matar un Ruiseñor" tiene 7 copias.
-# Opciones del Menú:
-# 1.	Ingresar lista de títulos:
-# o	Permite al usuario introducir los títulos de los libros en la biblioteca.
-# o	Ejemplo: El usuario introduce "1984", "Rebelión en la Granja".
-# 2.	Ingresar lista de ejemplares disponibles (por título):
-# o	Permite al usuario introducir el número de copias disponibles para cada título de libro.
-# o	Ejemplo: Si el título es "1984", el usuario podría introducir "4" (lo que significa que hay 4 copias).
-# 3.	Mostrar catálogo con stock:
-# o	Muestra una lista de todos los títulos y el número de copias disponibles para cada uno.
-# o	Ejemplo de salida:
-# 	"El Señor de los Anillos: 5 copias"
-# 	"Orgullo y Prejuicio: 3 copias"
-# 	"Matar un Ruiseñor: 7 copias"
-# 4.	Consultar disponibilidad de un título específico:
-# o	Permite al usuario introducir un título y ver cuántas copias están disponibles.
-# o	Ejemplo: El usuario introduce "Orgullo y Prejuicio", y el programa muestra "3 copias disponibles".
-# 5.	Listar agotados (0 ejemplares):
-# o	Muestra una lista de todos los títulos que tienen 0 copias disponibles.
-# 6.	Agregar título:
-# o	Permite al usuario añadir un nuevo título al catálogo y especificar el número inicial de copias.
-# 7.	Ver títulos agotados:
-# o	Muestra una lista de los títulos con cero copias disponibles.
-# 8.	Actualizar ejemplares (préstamo/devolución):
-# o	Permite al usuario actualizar el número de copias cuando un libro es prestado (préstamo) o devuelto (devolución).
-# o	Ejemplo: Si alguien toma prestada una copia de "El Señor de los Anillos", el usuario puede actualizar el conteo de 5 a 4.
-# o	Muestra el catálogo entero de los títulos de libros.
-# 10.	Salir:
-# o	Sale del programa.
-libros_biclioteca = ["Padrinos", "Principe de Persia", "Ruiseñor"]
-existencias=[10,7,9]
-lista_agotados = []
+#Mi biblioteca
+titulos = ["Cenicienta", "Programacion", "Matematicas", "Rachel"]
+ejemplares=[10,55,9,14]
+#Listas Vacias, donde se llenaran con datos segun avance el programa y se agregaran a la Biblioteca Escolar
 titulo_nuevo = []
 copias = []
+quitar_ejemplar=[]
+agregar_ejemplar=[]
+#Booleanos para finalizar el bucle while
 bandera = True
-print("Los libros existentes son", libros_biclioteca, "\ny las existencias de cada uno son", existencias)
+#Variables
+opcion = 0
+opcion_ejemplares = 0
+indice_buscar_libros = 0
+indice_quitar_libros = 0
+indice_agregar_libros = 0
 while bandera == True:
-    print("Bienvenido a la biclioteca escolar")
-    print("¿Que desea hoy?")
-    opcion = int(input("1-Ingresar Titulos\n3-Mostrar Catalogo\n4-Disponibilidad de libros\n5-Libros Agotados\n6-Agregar nuevo titulo\n7-Titulos Agotados\n8-Actualizar Ejemplares"))
+    print("*"*40)
+    print("¡Bienvenido a la Biblioteca Escolar!")
+    print("*"*40)
+    print("¿Qué acción desea realizar hoy?")
+#VALIDACION DE ENTRADA OPCION (1, 2, 3 &  4) 0 PARA SALIR
+    entrada = input("0-Salir\n1-Agregar Nuevos Libros\n2-Ver Catologo de la Biblioteca\n3-Disponibilidad de Libros\n4-Actualizar Ejemplares(Pedir/Devolver Libros)\n")
+    if not entrada.isdigit():
+        print("ERROR. ¡Por favor seleccione una opción Valida!")
+        continue
+    opcion = int(entrada)
+    #SE AGREGAN NUEVOS TITULOS, SI HAY ALGUN TITULO QUE YA EXISTA O NO INTENTE AGREGAR NADA, EL PROGRAMA NO LO DEJARA
     if opcion == 1:
-        titulo_nuevo = input("Ingrese el titulo del nuevo libro")
-        libros_biclioteca.append(titulo_nuevo)
-        copias = int(input("Ingrese las copias del libro"))
-        existencias.append(copias)
+        print("*"*30)
+        titulo_nuevo = str(input("Ingrese el titulo del nuevo libro\n")).capitalize()
+        if titulo_nuevo in titulos: #Valida si el libro existé en el catalogo
+            print("No pueden agregarse libros ya existentes, intente otro nombre")
+        elif titulo_nuevo == "": #Valida si se ingresa no se ingresa nada
+            print("No puede agregar un nombre vacio al catalogo")
+        else: #En caso de que sea False, se agrega el nuevo libro al catalogo
+            titulos.append(titulo_nuevo)
+            copias = int(input("Ingrese las copias del libro\n"))
+            ejemplares.append(copias)
+    #MUESTRA EL CATALOGO DE LA BIBLIOTECA CON SUS RESPECTIVAS COPIAS
     elif opcion == 2:
-        for i in len(libros_biclioteca):
-            for j in len(existencias):
-                print(f{libros_biclioteca},:,{existencias}")
+        print("*"*30)
+        for i in range(len(titulos)):
+            print(f"{titulos[i]}: {ejemplares[i]} copias")
+    #MUESTRA LA DISPONIBILIDAD DE LAS COPIAS DEL LIBRO SELECCIONADO, EN CASO DE QUE ELIGA UN LIBRO QUE NO EXISTA, EL PROGRAMA NO LO DEJARA
+    elif opcion == 3:
+        print("*"*30)
+        libro = input("¿Nombre del libro que busca?\n").capitalize()
+        if libro in titulos: #Recorre el índice de los libros para verificar si se encuentra el nombre del libro
+            indice_buscar_libros = titulos.index(libro)
+            print(f"{libro} Tiene {ejemplares[indice_buscar_libros]} copias")
+        else: #En caso de que el libro no se encuentre
+            print("El libro no se encuentra en la biblioteca")
+    #CUENTA PARA QUITAR/AGREGAR COPIAS A UN LIBRO EXISTENTE EN LA BIBLIOTECA, SI QUIERE AGREGAR UNO QUE NO SE ENCUENTRE, EL PROGRAMA NO LO DEJJARA
+    elif opcion == 4:
+        print("*"*30)
+        opcion_ejemplares = int(input("1-Pedir Libro / 2-Devolver Libro\n"))
+        if opcion_ejemplares == 1:
+            libro = input("Ingrese el nombre del libro que va a pedir\n").capitalize() ##VALIDACION DEL LIBRO INGRESADO
+            if libro not in titulos: ##SI EL LIBRO  SELECCIONAD NO SE ENCUENTRA EN LA BIBLIOTECA SALTA ESTE PRINT
+                print("No puede pedir libros que no se encuentran")
+            else: ##VALIDACION PARA QUE SE QUITEN COPIAS DEL LIBRO QUE HUBIESE ESCRITO EL USUARIO, VALIDANDO NUMEROS NEGATIVOS Y/O MAYORES A LA CANTIDAD DE COPIAS EXISTENTES
+                quitar_copia = int(input("¿Cuantas copias quiere del libro?\n"))
+                indice_quitar_libros = titulos.index(libro)
+                if quitar_copia < 0:
+                    print("ERROR. No se permite el ingreso de números negativos")
+                elif ejemplares[indice_quitar_libros] >= quitar_copia:
+                    ejemplares[indice_quitar_libros] -= quitar_copia
+                    print(f"Se quitaron {quitar_copia} copias del libro {libro}")
+                elif ejemplares[indice_quitar_libros] == 0:
+                    print("Ya no quedan copias del libro solicitado ¡Por favor avisar al encargado!")
+                else:
+                    print("Ha ingresado una cantidad a retirar que excede las copias actuales")
+        #VALIDACIÓN PARA AGREGAR COPIAS AL LIBRO QUE HUBIESE ESCRITO EL USUARIO
+        elif opcion_ejemplares == 2:
+            libro = input("Ingrese el nombre del libro que va a devolver\n").capitalize()
+            if libro not in titulos:
+                print("No puede pedir libros que no se encuentran")
+            else:
+                agregar_copia = int(input("¿Cuantas copias quiere agregar del libro?\n"))
+                indice_agregar_libros = titulos.index(libro)
+                if agregar_copia > 0:
+                    ejemplares[indice_agregar_libros] += agregar_copia
+                    print(f"¡Se agregaron {agregar_copia} copias del libro {libro}!")
+                else:
+                    print("ERROR. No se permiten el ingreso de números negativos")
+    elif opcion == 0:
+        print("¡Adios!")
+        bandera = False
+    else:
+        print("ERROR. ¡Seleccione una opción válida!")
+
+##Muy dificil aaaaaa 
