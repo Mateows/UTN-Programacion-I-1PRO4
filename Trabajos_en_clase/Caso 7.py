@@ -1,8 +1,8 @@
 
 
 #Variables
-alumnos_lista = ["Mateo"]
-asistencias = [0]
+alumnos_lista = []
+asistencias = []
 nombre_nuevo_alumno = []
 asistencias_por_alumno_nuevo = 0
 indice_agregar_asistencias = ""
