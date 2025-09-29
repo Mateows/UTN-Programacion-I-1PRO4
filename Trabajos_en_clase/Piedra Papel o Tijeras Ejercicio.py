@@ -46,18 +46,18 @@ while jugada_usuario != 4: #Siempre y cuando la condición ingresada por el usua
         break
     elif jugada_usuario == jugada_maquina: ##Por cada victoria del usuario, al valor: usuario_wins se le estara sumando +1 victoria
         print("Empate")
-        empate_man_machine = empate_man_machine + 1
+        empate_man_machine += 1
     elif jugada_usuario == 1 and jugada_maquina == 3 :
         print("Piedra vence a Tijera")
         usuario_wins = usuario_wins + 1
     elif jugada_usuario == 3 and jugada_maquina == 2:
         print("Tijera vence a Papel")
-        usuario_wins = usuario_wins + 1
+        usuario_wins += 1
     elif jugada_usuario == 2 and jugada_maquina == 1:
         print("Papel vence a Piedra")
-        usuario_wins = usuario_wins + 1
+        usuario_wins += 1
     else:
         print("Gano la maquina, big L ggEZ") ##Caso de que lo qué ingresase el usuario (incluyendo numeros negativos ó mayores a los que pide el programa), se le sumara una victoria a la maquina
-        maquina_wins = maquina_wins + 1
+        maquina_wins += 1
 
 print(f"El usuario ha ganado un total de: {usuario_wins}, veces. La maquina un total de: {maquina_wins} veces, y un total de {empate_man_machine} empates.")
