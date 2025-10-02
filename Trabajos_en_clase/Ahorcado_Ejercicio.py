@@ -3,7 +3,7 @@
 #MIS FUNCIONES PARA EL PROGRAMA PRINCIPAL!!!!!!
 def pedir_letra(): ##Pide una letra al usuario cuando se llama la funcion
     letra = input("Ingrese una letra: ").lower().strip()
-    if len(letra) == 1 and letra.isalpha(): ##Pregunta si la letra es, una letra (valga la redundancia) y que la letra solo sea una(1 solo caracter)
+    if len(letra) == 1 and letra.isalpha(): ##Pregunta si la letra es un caracter , y que ese caracter solo contenga 1 sola letra
         return letra 
     else:
         print("Entrada Invalida. Ingrese una sola letra(a-z)") #Caso de ingresar más de una letra y/o se ingresase un número se vuelve a llamar la funcion pedir_letra
