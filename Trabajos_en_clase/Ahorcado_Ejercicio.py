@@ -2,13 +2,14 @@
 ##Ejercicio clase 29/9/2025##
 #MIS FUNCIONES PARA EL PROGRAMA PRINCIPAL!!!!!!
 def pedir_letra(): ##Pide una letra al usuario cuando se llama la funcion
-    letra = input("Ingrese una letra: ").lower().strip()
-    if len(letra) == 1 and letra.isalpha(): ##Pregunta si la letra es un caracter , y que ese caracter solo contenga 1 sola letra
-        return letra 
-    else:
-        print("Entrada Invalida. Ingrese una sola letra(a-z)") #Caso de ingresar más de una letra y/o se ingresase un número se vuelve a llamar la funcion pedir_letra
-        return pedir_letra()
-###############################
+        while True:
+            letra = input("Ingrese una letra: ").lower().strip()
+            if len(letra) == 1 and letra.isalpha(): ##Pregunta si la letra es un caracter , y que ese caracter solo contenga 1 sola letra
+                return letra  
+            else:
+                print("Entrada Invalida. Ingrese una sola letra(a-z)") #Caso de ingresar más de una letra y/o se ingresase un número se vuelve a llamar la funcion pedir_letra
+                continue
+    ###############################
 #Variables
 import random
 mi_lista = ["miko", "inazuma", "fontaine", "sumeru"] #Puede modificar la lista con menos palabras!
