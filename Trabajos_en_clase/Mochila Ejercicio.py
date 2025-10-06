@@ -41,11 +41,11 @@
 #  Espacio 3: --- vacío ---
 
 
-
-def ver_mi_inventario(mochila):
+#Recorro el inventario con un bucle for y el rango de mochila
+def ver_mi_inventario(mochila): 
     print("Mi Inventario :D")
-    for i in range(len(mochila)):
-        print(f"Posicion {i} Item: {mochila[i]}")
+    for espacios in range(len(mochila)):
+        print(f"Posicion {espacios} Item: {mochila[espacios]}")
 
 
 
@@ -55,61 +55,63 @@ def guardar_objetos(mochila):
     try:
         posicion_inventario = input(f"Ingrese la posicion (0-{len(mochila)-1}): ")
         if not posicion_inventario.isdigit():
-            raise ValueError("No puede acceder a espacios vacios ó ingresar caracteres, intente con un rango válido")
+            raise ValueError("No puede acceder a espacios vacios ó ingresar caracteres, intente con un rango válido") #se guarda en la posicion e
         
         posicion_inventario = int(posicion_inventario)
 
-        if mochila[posicion_inventario] == "-Vacio-":
+        if mochila[posicion_inventario] == "-Vacio-": #Me fijo que mi inventario en la posicion elegida este vacio, caso contrario se ejecuta la linea 71
             item = input("Ingresé el nombre del objeto: ").strip().title()
-            if item == "":
-                raise ValueError("El nombre del objeto no puede estar vacio!")
-            
-            mochila[posicion_inventario] = item
-            print((f"El objeto {item} se guardo correctamente en la posicion {posicion_inventario}"))
-            return mochila
+            if item == "" or not item.isalpha():
+                raise ValueError("El nombre del objeto no puede contener ni números, ni caracteres especiales y/o nombres vacios. . .") #se guarda en la variable "e"
+            else:
+                mochila[posicion_inventario] = item
+                print((f"El objeto {item} se guardo correctamente en la posicion {posicion_inventario}"))
+                return mochila
         else:
-            print("Esa posicion ya está ocupada, intente borrar ese item o con un espacio vacio")
-    except IndexError:
+            print(f"Esa posicion ya está ocupada por el siguiente item: {mochila[posicion_inventario]}")
+
+    except IndexError: #En caso de que el usuario intente meterse a una posicion de la lista no cargada/añadida
         print("Accediendo a un espacio vacio, intente nuevamente")
+
     except ValueError as e:
-        print(f"ERROR. {e}")
+        print(f"ERROR. {e}") #Imprimo cualquiera de los errores Raise que hubiesen surgido durante la ejecucion especificando qué error ocurio
 
 
-
-
-
-
-#Validacion de espacios en la mochila (principal)
+#Validacion de espacios en la mochila#
 def validar_mochila():
     while True:
-        try:
+        try: 
             espacios =input("Cuantos espacios tiene la mochila: ").strip()
             if not espacios.isdigit():
-                raise ValueError("Tiene que ser un numero entero positivo")
+                raise ValueError("Tiene que ser un numero entero positivo") #Se guarda en la variable e
             
             espacios = int(espacios)
 
-            if espacios <= 0:
-                raise ValueError("Tiene que ser mayor que 0")
-            return ["-Vacio-"] * espacios
+            if espacios == 0:
+                raise ValueError("Tiene que ser mayor que 0") #Se guarda en la variable e
+            
+
+            return ["-Vacio-"] * espacios ##RETORNO DEL INVENTARIO CREADO AL PROGRAMA PRINCIPAL. . . .
+        
         except ValueError as e:
-            print(f"ERROR. {e}")
+            print(f"ERROR. {e}") #Imprime los errores que ocurrieron en la ejecucion, por ejemplo "ERROR. Tiene que ser mayor que 0" en caso de que el número ingresado fuese 0
 
 
 
 
-#Validacion de la mochila
+
+
+
+#[-----------------------CREACION DE LA MOCHILA-------------------]
 mochila = validar_mochila()
 print(f"Espacio de  la mochila: {mochila}")
-
-
-#Menú del Aventurero
+#[------------------------Menú del Aventurero--------------------]
 while True:
     print("--->Inventario<---")
     print("1. Guardar Objetos ")
     print("2. Ver mi Inventario")
     print("3. Salir")
-    opcion = input("Voy a . . . ")
+    opcion = input("Opcion: ")
     match opcion:
         case "1":
             guardar_objetos(mochila)
