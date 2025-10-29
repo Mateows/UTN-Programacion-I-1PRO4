@@ -2,18 +2,21 @@
 # diccionario donde: 
 # Las capitales sean las claves. 
 # Los países sean los valores
-diccionario_paises = {"Alemanía" : "Berlín",
-                    "Australía" : "Canberra",
-                    "Reino Unido" : "Londres",
-                    "México" : "Ciudad de México",
-                    "Perú" : "Lima",
-                    "Brazil" : "Brasilia"
-                    }
+# diccionario_paises = {"Alemanía" : "Berlín",
+#                     "Australía" : "Canberra",
+#                     "Reino Unido" : "Londres",
+#                     "México" : "Ciudad de México",
+#                     "Perú" : "Lima",
+#                     "Brazil" : "Brasilia"
+#                     }
 
-diccionario_paises_invertidos = {
-                                }
+# diccionario_paises_invertidos = {
+#                                 }
 
-for clave, valor in diccionario_paises.items():
-    diccionario_paises_invertidos[valor] = clave
+# for clave, valor in diccionario_paises.items():
+#     diccionario_paises_invertidos[valor] = clave
 
-print(diccionario_paises_invertidos)
+# print(diccionario_paises_invertidos)
+
+tupla = (1,2,3)
+print(tupla[1])
