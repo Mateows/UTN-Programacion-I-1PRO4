@@ -106,7 +106,8 @@ def eliminar(lista):
         print("Elemento borrado correctamente")
         return lista_nueva
 
-###CONTINUAR CON LA OPCION DE CONSULTAR DISPONIBILIDAD
+def consultar_stock(lista):
+
 
 def menu_principal():
     print("MENÚ")
@@ -137,6 +138,8 @@ def programa_principal():
                     inventario = modificar(inventario)
                 case 4:
                     inventario = eliminar(inventario)
+                case 5:
+                    inventario = consultar_stock(inventario)
                 case _:
                     print("Intente un numero valido")
         except ValueError:
