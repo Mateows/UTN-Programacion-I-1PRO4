@@ -95,18 +95,40 @@ def eliminar(lista):
     if not quitar.isalpha():
         print("Valor invalido. Volviendo al menu")
         return
-    else:
-        quitar = str(quitar)
+    
+    quitar = str(quitar)
 
-        for elem in lista:
-            if (quitar == elem["nombre"]):
-                continue
-            lista_nueva.append(elem)
-        actualizar_archivo(lista_nueva)
-        print("Elemento borrado correctamente")
-        return lista_nueva
+    for elem in lista:
+        if (quitar == elem["nombre"]):
+            continue
+        lista_nueva.append(elem)
+    actualizar_archivo(lista_nueva)
+    print("Elemento borrado correctamente")
+    return lista_nueva
 
 def consultar_stock(lista):
+    consultar = input("De que herramienta desea saber su stock? ").title().strip()
+    if not consultar.isalpha():
+        print("Valor invalido. Volviendo al menu")
+        return
+    consultar = str(consultar)
+    for elem in lista:
+        if consultar == elem["nombre"]:
+            print(f"{consultar} tiene {elem["stock"]} unidades")
+            return lista
+    print("No hay coincidencias")
+
+
+
+
+def listar_sin_stock(lista):
+    for elem in lista:
+        if elem["stock"] == 0:
+            print(f"{elem["nombre"]} - {elem["stock"]}")
+
+
+
+
 
 
 def menu_principal():
@@ -140,6 +162,8 @@ def programa_principal():
                     inventario = eliminar(inventario)
                 case 5:
                     inventario = consultar_stock(inventario)
+                case 6:
+                    inventario = listar_sin_stock(inventario)
                 case _:
                     print("Intente un numero valido")
         except ValueError:
