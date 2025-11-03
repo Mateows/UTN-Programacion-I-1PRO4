@@ -3,8 +3,9 @@ import csv
 def inicializar_archivo():
     if not os.path.exists("inventario.csv"):
         with open("inventario.csv", "w", newline="", encoding="utf-8") as archivo:
-                escritor = csv.DictWriter(archivo, fieldnames=["nombre", "stock"])
-                escritor.writeheader()
+            
+            escritor = csv.DictWriter(archivo, fieldnames=["nombre", "stock"])
+            escritor.writeheader()
 
 
 
@@ -28,9 +29,9 @@ def cargar_archivo():
 
 def actualizar_archivo(lista):
     with open("inventario.csv", "w", newline="", encoding="utf-8") as archivo:
-            escritor = csv.DictWriter(archivo, fieldnames=["nombre", "stock"])
-            escritor.writeheader()
-            escritor.writerows(lista)
+        escritor = csv.DictWriter(archivo, fieldnames=["nombre", "stock"])
+        escritor.writeheader()
+        escritor.writerows(lista)
 
 
 def agregar_herramientas(lista):
