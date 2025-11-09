@@ -1,4 +1,4 @@
-def fibonacci(n):
+def fibonacci(n): #Función recursiva
     if n == 0:
         return 0
     elif n == 1:
@@ -9,11 +9,12 @@ def fibonacci(n):
 
 
 while True:
-    try:
+    try: #Solicito los usuarios al usuario
         num = int(input("Ingrese un número: "))
         if num < 0:
             print("Ingrese un numero mayor a 0")
             continue
+        ##Llamo a la función recursiva
         print("Serie fibonacci")
         for i in range(num):
             print(fibonacci(i))
