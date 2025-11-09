@@ -1,8 +1,8 @@
-def factorial(usuario_num):
-    if n == 0:
-        reurn 1
+def factorial(num_usuario):
+    if num_usuario == 0:
+        return 1
     else:
-        return n * factorial(n-1)
+        return num_usuario * factorial(num_usuario-1)
 
 
 
@@ -10,12 +10,21 @@ def factorial(usuario_num):
 while True:
     try:
         num = int(input("Ingrese un número: "))
-        except ValueError:
-            
+        if num < 0:
+            print("Ingrese un numero mayor a 0")
+            continue
+
+        for i in range(1, num+1):
+            print(f"El factorial de {i} es: {factorial(i)}")
+
+    except ValueError:
+        print("Intente con un numero entero posiivo")
+        continue
+    break
 
 
 
 
 
 
-
+Visua
